@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+    <link rel="stylesheet" type="text/css" href="css/index.css" >
+    <link rel="stylesheet" type="text/css" href="js/jquery.mobile-1.4.5.min.css">
+    <link href="slick/slick.css" rel="stylesheet">
+    <link href="slick/slick-theme.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+    <!-- Page events testing -->
+    <script>
+        $(document).on('pagecreate', function (evt) {
+            $("#page16").on("tap", function (e) {
+                console.log("you tapped!");
+            });
+
+            $("#page16").on("swiperight", function (e) {
+                console.log("you swiped right!");
+            });
+
+            $("#page16").on("swipeleft", function (e) {
+                console.log("you swiped left!");
+            });
+
+            // NOTE: Android devices cannot do orientation on the page level they need it on $(window)
+            $("#page16").on("orientationchange", function (e, o) {
+                console.log("Orientation changed to: " + e.orientation);
+            });
+
+            // $(document).on("scrollstop", function (e) {
+            //     console.log("scrolling stopped");
+            // });
+            // $(document).on("scrollstart", function (e) {
+            //     console.log("scrolling started");
+            // });
+
+            // $(document).on('pagebeforecreate', function (evt) {
+            //    console.log("pagebeforecreate fired");
+            // });
+
+            // $(document).on('pagecreate', function (evt) {
+            //    console.log("pagecreate fired");
+            // });
+            // $(document).on('pagecontainerload', function (evt,data) {
+            //    console.log("page loaded:\nURL: " + data.url);
+            // });
+            // $(document).on('pagecontainerbeforehide', function (evt,data) {
+            //    console.log("page about to be hidden ");
+            // });
+
+            // $(document).on('pagecontainerbeforeshow', function (evt,data) {
+            //    console.log("page about to be shown ");
+            // });
+
+            // $(document).on('pagecontainerhide', function (evt,data) {
+            //    console.log("page has been hidden ");
+            // });
+
+            // $(document).on('pagecontainershow', function (evt,data) {
+            //    console.log("page has been shown ");
+            // });
+        });
+    </script>
+    <!-- END Page events testing -->
+    
+    <title>Cabot Cruises</title>
+
+</head>
+
+<body>
+    <section id="homeScreen" data-role="page">
+        <header data-role="header" data-position="fixed" >
+            <h1>Cabot Cruises</h1>
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#homeScreen">Home</a></li>
+                    <li><a href="#buddy">Buddy</a></li>
+                    <li><a href="#cruises">Cruises</a></li>
+                    <li><a href="#book">Book</a></li>
+                </ul>
+            </div><!-- /navbar -->
+        </header>
+
+        <h1>Welcome to Cabot Cruises</h1>
+        <div class="myslider">
+                <div>
+                    <picture>
+                        <source srcset="sliders/slider01s.jpg" media="(max-width: 29.24rem)">
+                         <source srcset="sliders/slider01h.jpg" media="(min-width: 29.25rem)">
+                        <img srcset="sliders/slider01h.jpg" alt="">
+                    </picture>
+                </div>
+
+                <div>
+                    <picture>
+                        <source srcset="sliders/slider02s.jpg" media="(max-width: 29.24rem)">
+                        <source srcset="sliders/slider02h.jpg" media="(min-width: 29.25rem)">
+                        <img srcset="sliders/slider02h.jpg" alt="">
+                    </picture>
+                </div>
+
+                <div>
+                    <picture>
+                        <source srcset="sliders/slider03s.jpg" media="(max-width: 29.24rem)">
+                        <source srcset="sliders/slider03h.jpg" media="(min-width: 29.25rem)">
+                        <img srcset="sliders/slider03h.jpg" alt="">
+                    </picture>
+                </div>
+
+                <div>
+                    <picture>
+                        <source srcset="sliders/slider04s.jpg" media="(max-width: 29.24rem)">
+                        <source srcset="sliders/slider04h.jpg" media="(min-width: 29.25rem)">
+                        <img srcset="sliders/slider04h.jpg" alt="">
+                    </picture>
+                </div>
+            </div> <!-- end slider -->
+
+
+            <div class="container">
+                 <div class="teaser ie1">
+                    <img class="news" src="images/story1.jpg" alt="" >
+                    <span>2/28/2019</span>  
+                </div>
+
+                <div class="teaser ie2">
+                    <img class="news" src="images/story2.jpg" alt="" >
+                    <span>4/15/2019</span>  
+                </div>
+
+                <div class="teaser ie3">
+                    <img class="news" src="images/story3.jpg" alt="" >
+                    <span>8/21/2019</span>  
+                </div>
+
+                <div class="teaser ie4">
+                    <img class="news" src="images/story4.jpg" alt="" >
+                    <span>10/2/2019</span>  
+                </div>
+            </div>
+
+        <footer data-role="footer" data-position="fixed">
+            <h4>Footer</h4>
+        </footer>
+    </section>
+
+
+
+
+
+<!--BOOK PAGE-->
+    <section id="book" data-role="page">
+        <header data-role="header" data-position="fixed" >
+            <h1>Book Trip</h1>
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#homeScreen">Home</a></li>
+                    <li><a href="#buddy">Buddy</a></li>
+                    <li><a href="#cruises">Cruises</a></li>
+                    <li><a href="#book">Book</a></li>
+                </ul>
+            </div><!-- /navbar -->
+        </header>
+
+         <div class="ui-content">
+            <form action="/action_page.php">
+                <label for="fname">Full Name</label>
+                <input type="text" id="fname" name="fullname" placeholder="Your name.." required>
+
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" placeholder="Your address.." required>
+                  
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" placeholder="City.." required>
+                  
+                <label for="state">State</label>
+                <select id="state" name="state">
+                    <option value="AL">Alabama</option>
+                    <option value="AK">Alaska</option>
+                    <option value="AZ">Arizona</option>
+                    <option value="AR">Arkansas</option>
+                    <option value="CA">California</option>
+                    <option value="CO">Colorado</option>
+                    <option value="CT">Connecticut</option>
+                    <option value="DE">Delaware</option>
+                    <option value="DC">District Of Columbia</option>
+                    <option value="FL">Florida</option>
+                    <option value="GA">Georgia</option>
+                    <option value="HI">Hawaii</option>
+                    <option value="ID">Idaho</option>
+                    <option value="IL">Illinois</option>
+                    <option value="IN">Indiana</option>
+                    <option value="IA">Iowa</option>
+                    <option value="KS">Kansas</option>
+                    <option value="KY">Kentucky</option>
+                    <option value="LA">Louisiana</option>
+                    <option value="ME">Maine</option>
+                    <option value="MD">Maryland</option>
+                    <option value="MA">Massachusetts</option>
+                    <option value="MI">Michigan</option>
+                    <option value="MN">Minnesota</option>
+                    <option value="MS">Mississippi</option>
+                    <option value="MO">Missouri</option>
+                    <option value="MT">Montana</option>
+                    <option value="NE">Nebraska</option>
+                    <option value="NV">Nevada</option>
+                    <option value="NH">New Hampshire</option>
+                    <option value="NJ">New Jersey</option>
+                    <option value="NM">New Mexico</option>
+                    <option value="NY">New York</option>
+                    <option value="NC">North Carolina</option>
+                    <option value="ND">North Dakota</option>
+                    <option value="OH">Ohio</option>
+                    <option value="OK">Oklahoma</option>
+                    <option value="OR">Oregon</option>
+                    <option value="PA">Pennsylvania</option>
+                    <option value="RI">Rhode Island</option>
+                    <option value="SC">South Carolina</option>
+                    <option value="SD">South Dakota</option>
+                    <option value="TN">Tennessee</option>
+                    <option value="TX">Texas</option>
+                    <option value="UT">Utah</option>
+                    <option value="VT">Vermont</option>
+                    <option value="VA">Virginia</option>
+                    <option value="WA">Washington</option>
+                    <option value="WV">West Virginia</option>
+                    <option value="WI">Wisconsin</option>
+                    <option value="WY">Wyoming</option>
+                </select>
+                  
+                  <label for="zip">ZIP Code</label>
+                  <input type="text" placeholder="Zipcode.." id="zip" pattern="[0-9]{5}" title="Five digit zip code" required>
+
+                  
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Your phone number.." required>
+                  
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Your email address.." required>
+                  
+                <label for="cruise">Cruise Selection</label>
+                <select id="cruiseSelection" name="cruises">
+                    <option value="Greece">Greece</option>
+                    <option value="Italy">Italy</option>
+                    <option value="Mexico">Mexico</option>
+                    <option value="Carribean">Carribean</option>
+                    <option value="Bahamas">Bahamas</option>
+                    <option value="Jamaica">Jamaica</option>
+                    <option value="Norwegia">Norwegia</option>
+                </select>
+
+                <input type="submit" value="Book Your Cruise">
+              </form>
+            <!--End Forms-->
+        </div>
+        <footer data-role="footer" data-position="fixed">
+            <a href="#homeScreen" class="ui-btn-left">Home</a>
+            <h4>Footer</h4>
+        </footer>
+    </section>
+
+
+
+
+<!--CRUISES PAGE-->
+    <section id="cruises" data-role="page">
+        <header data-role="header" data-position="fixed" >
+            <h1>Cruises</h1>
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#homeScreen">Home</a></li>
+                    <li><a href="#buddy">Buddy</a></li>
+                    <li><a href="#cruises">Cruises</a></li>
+                    <li><a href="#book">Book</a></li>
+                </ul>
+            </div><!-- /navbar -->
+        </header>
+            <div class="ui-content">
+                <p>View Our Cruise Packages:</p>
+                <div data-role="collapsible">
+                    <h1>Australia & New Zealand</h1>
+                    <p>Australia & New Zealand Cruises from $999!</p>
+                    <img src="images/AustraliaCruise.jpg" alt="cruise1">
+                </div>
+
+                <div data-role="collapsible">
+                    <h1>Royal Caribbean</h1>
+                    <p>Royal Caribbean International from $1199!</p>
+                    <img src="images/royalcaribbeancruise.jpg" alt="cruise4">
+                </div>
+
+                <div data-role="collapsible">
+                    <h1>Norwegian Cruise</h1>
+                    <p>Norwegian Cruise Line for $1299</p>
+                    <img src="images/NorwegianCruise.jpg" alt="cruise2">
+                </div>
+
+                <div data-role="collapsible">
+                    <h1>Disney Cruise</h1>
+                    <p>Disney Cruise Line from $1499!</p>
+                    <img src="images/DisneyCruise.jpg" alt="cruise3">
+                </div>
+            </div>
+
+        <footer data-role="footer" data-position="fixed">
+            <a href="#homeScreen" class="ui-btn-left">Home</a>
+            <h4>Footer</h4>
+        </footer>
+    <!-- </section> -->
+
+
+
+    <!--BUDDY SORELL PAGE-->
+    <section id="buddy" data-role="page">
+        <header data-role="header" data-position="fixed" >
+            <h1>Buddy Sorell</h1>
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#homeScreen">Home</a></li>
+                    <li><a href="#buddy">Buddy</a></li>
+                    <li><a href="#cruises">Cruises</a></li>
+                    <li><a href="#book">Book</a></li>
+                </ul>
+            </div><!-- /navbar -->
+        </header>
+
+        <div class="ui-content">
+          <!-- BUTTONS -->
+        <div class="agent">
+            <h2 class="agentName">Buddy Sorrell</h2>
+            <img class="agentImage" src="images/buddySorrell.jpg" alt="buddy">
+            <h3>Phone: </h3>
+            <p>1-800-555-1234 ext. 12</p>
+            
+            <h3>Working: </h3>
+            <p>Monday, Wednesday, Friday</p>
+            
+            <h3>Destination Specialization: </h3>
+            <p>Israel, Egypt, Italy, Greece, Hawaii,
+                Guatemala, Southern
+                California, Orlando, Las Vegas, Bahamas,
+                Caribbean cruises.
+            </p>
+            
+            <h3>Office Hours: </h3>
+            <p>8:00am-6:00pm</p>
+            
+            
+            <h3>Biography: </h3>
+            <p> I have loved travel for as long as I can
+                remember. At the age of 12 I asked if I
+                could fly by myself
+                to Hawaii and I never came back.<br>
+                Right out of high school I started into
+                travel school and have had the
+                opportunity to work in many aspects of
+                the industry. In every aspect I have
+                worked I have had the opportunity to
+                help people travel, to help fulfill people?
+                s dreams, what could be beWer to do
+                every day!
+            </p>
+            
+            
+            <h3>Customer Comment: </h3>
+            <p>"Thank you Buddy for all your planning
+                and efforts to ensure that we could
+                enjoy our tour and bring back such
+                wonderful memories."
+                -John Doe
+            </p>
+        </div>
+          <!-- grouping buttons together in a controlgroup -->
+          <p>Rate Buddy Sorell on his performance: </p>
+          <div data-role="controlgroup" data-type="horizontal">
+              <button class="ui-btn">1 star</button>
+              <button class="ui-btn">2 stars</button>
+              <button class="ui-btn">3 stars</button>
+              <button class="ui-btn">4 stars</button>
+              <button class="ui-btn">5 stars</button>
+          </div>
+
+          <form method="get" action="">
+              <fieldset data-role="controlgroup">
+              <legend>Would you recommend Buddy to friends and family?:</legend>
+              <label for="cb1">Yes</label>
+              <input type="checkbox" name="cb1" id="cb1" />
+              <label for="cb2">No</label>
+              <input type="checkbox" name="cb2" id="cb2" />
+              </fieldset>
+          </form>
+        </div>
+
+        <footer data-role="footer" data-position="fixed">
+            <a href="#homeScreen" class="ui-btn-left">Home</a>
+            <h4>Footer</h4>
+        </footer>
+    </section>
+
+    <script>
+        // Pagecreate will fire for each of the pages in this demo
+// but we only need to bind once so we use "one()"
+$( document ).one( "pagecreate", ".demo-page", function() {
+    // Initialize the external persistent header and footer
+    $( "#header" ).toolbar({ theme: "b" });
+    $( "#footer" ).toolbar({ theme: "b" });
+    // Handler for navigating to the next page
+    function navnext( next ) {
+        $( ":mobile-pagecontainer" ).pagecontainer( "change", next + ".html", {
+            transition: "slide"
+        });
+    }
+    // Handler for navigating to the previous page
+    function navprev( prev ) {
+        $( ":mobile-pagecontainer" ).pagecontainer( "change", prev + ".html", {
+            transition: "slide",
+            reverse: true
+        });
+    }
+    // Navigate to the next page on swipeleft
+    $( document ).on( "swipeleft", ".ui-page", function( event ) {
+        // Get the filename of the next page. We stored that in the data-next
+        // attribute in the original markup.
+        var next = $( this ).jqmData( "next" );
+        // Check if there is a next page and
+        // swipes may also happen when the user highlights text, so ignore those.
+        // We're only interested in swipes on the page.
+        if ( next && ( event.target === $( this )[ 0 ] ) ) {
+            navnext( next );
+        }
+    });
+    // Navigate to the next page when the "next" button in the footer is clicked
+    $( document ).on( "click", ".next", function() {
+        var next = $( ".ui-page-active" ).jqmData( "next" );
+        // Check if there is a next page
+        if ( next ) {
+            navnext( next );
+        }
+    });
+    // The same for the navigating to the previous page
+    $( document ).on( "swiperight", ".ui-page", function( event ) {
+        var prev = $( this ).jqmData( "prev" );
+        if ( prev && ( event.target === $( this )[ 0 ] ) ) {
+            navprev( prev );
+        }
+    });
+    $( document ).on( "click", ".prev", function() {
+        var prev = $( ".ui-page-active" ).jqmData( "prev" );
+        if ( prev ) {
+            navprev( prev );
+        }
+    });
+});
+$( document ).on( "pageshow", ".demo-page", function() {
+    var thePage = $( this ),
+        title = thePage.jqmData( "title" ),
+        next = thePage.jqmData( "next" ),
+        prev = thePage.jqmData( "prev" );
+    // Point the "Trivia" button to the popup for the current page.
+    $( "#trivia-button" ).attr( "href", "#" + thePage.find( ".trivia" ).attr( "id" ) );
+    // We use the same header on each page
+    // so we have to update the title
+    $( "#header h1" ).text( title );
+    // Prefetch the next page
+    // We added data-dom-cache="true" to the page so it won't be deleted
+    // so there is no need to prefetch it
+    if ( next ) {
+        $( ":mobile-pagecontainer" ).pagecontainer( "load", next + ".html" );
+    }
+    // We disable the next or previous buttons in the footer
+    // if there is no next or previous page
+    // We use the same footer on each page
+    // so first we remove the disabled class if it is there
+    $( ".next.ui-state-disabled, .prev.ui-state-disabled" ).removeClass( "ui-state-disabled" );
+    if ( ! next ) {
+        $( ".next" ).addClass( "ui-state-disabled" );
+    }
+    if ( ! prev ) {
+        $( ".prev" ).addClass( "ui-state-disabled" );
+    }
+});
+    </script>
+
+<script src="slick/slick.min.js"></script>
+<script>
+$(document).ready(function(){
+  $('.myslider').slick({
+    lazyLoad: 'progressive',
+    dots: true,
+    arrows: false,
+    infinite: true,
+    speed: 1000,
+    cssEase: 'ease-out',
+    autoplay: true,
+    autoplaySpeed: 30000
+  });
+});
+    
+</script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        app.initialize();</script>
+</body>
+
+</html>
